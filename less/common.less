@@ -1,0 +1,138 @@
+// out: .././css/common.css, compress: true, strictMath: true  
+@mainColor : #FF1D46; //主体颜色
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+*:focus {
+  outline: none
+}
+
+html,
+body {
+  font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+  background: @mainColor;
+  color: #747474
+}
+
+
+/*
+  页面头部
+*/
+
+.header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  overflow: hidden;
+  height: 50px;
+  background: #F2FF30;
+}
+
+.header-left,
+.header-right {
+  -webkit-box-flex: 0.0;
+  -webkit-flex-grow: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.header-icon {
+  display: block;
+  line-height: 50px;
+  font-size: 20px!important;
+  color: @mainColor;
+}
+
+.header-center {
+  -webkit-box-flex: 1.0;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  color: @mainColor;
+}
+
+
+/*
+  首页列表
+*/
+
+.index-list-ul {
+  overflow: hidden;
+}
+
+.index-list-li {
+  padding: 5px 10px;
+  line-height: 28px;
+  font-size: 14px;
+  color: #FFC4CF;
+  border-bottom: 1px solid #FF3C60;
+}
+
+
+/*
+  页面底部
+*/
+
+.footer {
+  padding: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: #C6FF1D;
+  background: #FD002E;
+}
+
+
+/*
+  关于
+*/
+
+.article-about {
+  padding: 10px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #FFE5EA;
+}
+
+
+/*
+  404错误信息
+*/
+
+.error {
+  padding: 100px 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #eee;
+}
+
+
+/*
+  详情页面
+*/
+
+.article-view {
+  padding: 10px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #FFD2D2;
+}
+
+.article-view h2 {
+  font-size: 16px;
+  text-align: center;
+  color: #FFF8D7;
+}
