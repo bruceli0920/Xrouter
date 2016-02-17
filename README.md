@@ -1,3 +1,4 @@
+<code>
 # Xrouter
 原生js开发的轻量级路由插件
 
@@ -39,3 +40,5 @@ app.hashchange();
  * @param {boolean} true=马上初始化，false不马上初始化
 
 app.start();
+
+</code>
