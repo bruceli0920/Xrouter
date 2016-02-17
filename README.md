@@ -1,3 +1,4 @@
+<pre>
 <code>
 # Xrouter
 原生js开发的轻量级路由插件
@@ -42,3 +43,4 @@ app.hashchange();
 app.start();
 
 </code>
+</pre>
