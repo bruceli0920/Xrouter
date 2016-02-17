@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0">
+    <title>原生js路由插件</title>
+    <script type="text/javascript" src="../js/Xroute.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        #nav {
+            overflow: hidden;
+            line-height: 38px;
+            background: #ccc;
+        }
+        
+        #nav .chlid {
+            float: left;
+            width: 33%;
+            text-align: center;
+        }
+        
+        #nav .cur {
+            background: #745ADE;
+        }
+        
+        #nav .cur a {
+            display: block;
+            color: #fff;
+        }
+        
+        #tab .chlid {
+            display: none;
+            padding: 10px;
+            line-height: 28px;
+            font-size: 14px;
+        }
+        
+        #log {
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div class="chlid"><a href="#/tab/0">html</a></div>
+        <div class="chlid"><a href="#/tab/1">css</a></div>
+        <div class="chlid"><a href="#/tab/2">Javascript</a></div>
+    </div>
+    <div id="tab">
+        <div class="chlid">超文本标记语言，标准通用标记语言下的一个应用。 “超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。 超文本标记语言的结构包括“头”部分（英语：Head）、和“主体”部分（英语：Body），其中“头”部提供关于网页的信息，“主体”部分提供网页的具体内容。</div>
+        <div class="chlid">它是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。</div>
+        <div class="chlid">JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。</div>
+    </div>
+    <div id="log"></div>
+    <script type="text/javascript">
+        (function () {
+
+            var oTab = document.getElementById('tab');
+            var aTab = oTab.querySelectorAll('.chlid');
+
+            var oNav = document.getElementById('nav');
+            var aNav = document.querySelectorAll('.chlid');
+
+            var oLog = document.getElementById('log');
+
+            var app = new Xroute();
+
+            app.get('/tab/:i', function (req, res, next) {
+                var i = req.param.i;
+
+                if (typeof (i) == 'number' && aTab.length >= i) { //如果url地址符合条件，就按照url显示，否则就显示默认的
+                    showTab(i);
+                    oLog.innerHTML = '参数符合条件，默认显示第' + i + '个';
+                } else {
+                    showTab(0); //默认显示第0个选项卡
+                    oLog.innerHTML = '参数不符合条件，默认显示第0个';
+                }
+                next();
+            });
+
+            app.get(function (req, res, next) {
+                showTab(0); //默认显示第0个选项卡
+                oLog.innerHTML = 'url路由不存在，默认显示第0个';
+            });
+            
+            //开始处理和监听锚点
+            app.start();
+
+
+            /**
+             * xians指定的选项卡
+             * @param {number} index 显示哪个选项卡
+             */
+            function showTab(index) {
+                for (var i = 0; i < aTab.length; i++) {
+                    aTab[i].style.display = 'none';
+                    aNav[i].classList.remove('cur');
+                }
+
+                aTab[index].style.display = 'block';
+                aNav[index].classList.add('cur');
+            }
+
+        })();
+    </script>
+
+</body>
+
+</html>
